@@ -108,15 +108,6 @@ Deploy to Vercel / Netlify by connecting the repository and following the platfo
 3. Commit your changes and push
 4. Open a pull request describing your changes
 
-## Troubleshooting
-
-* If the gallery shows a blank canvas: check the browser console for WebGL or shader errors.
-* If assets fail to load: verify correct paths in `public/` and check CORS settings for external assets.
-
-## License
-
-Specify a license (MIT, Apache-2.0, etc.) or add project-specific licensing details here.
-
 ## Contact
 
 For questions or help, contact the project owner or maintainer.
