@@ -1,7 +1,5 @@
 # 3D Art Gallery
 
-> README for the 3D Art Gallery web application
-
 ## Project Overview
 
 A modern, interactive 3D art gallery web application that showcases digital artwork in a virtual gallery space. Visitors can navigate the gallery, view artwork details, zoom and rotate art pieces, and enjoy ambient lighting and camera transitions. This README was prepared based on the provided project link; if the live site is private or unavailable, treat this as a template README that you can adapt.
