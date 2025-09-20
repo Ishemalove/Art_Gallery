@@ -114,6 +114,4 @@ For questions or help, contact the project owner or maintainer.
 
 ---
 
-### NOTE
 
-I attempted to access the provided link to generate this README automatically, but the page appears to be private or returned minimal content. This README is therefore a thorough template you can use or adapt to match the actual project's files and commands. If you want, I can update this README to exactly match the repository if you share the repo contents or grant access to the live site.
