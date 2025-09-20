@@ -11,9 +11,7 @@ A modern, interactive art gallery web application that showcases digital artwork
 * Zoom, rotate and inspect 3D art pieces or hi-res images
 * Ambient lighting and environment map for realism
 * Responsive layout (desktop/tablet/mobile support)
-* Optional VR / WebXR support (if enabled)
 * Search, filter and categorize artworks
-* Admin or curator panel to add, edit or remove artworks (if included)
 * Performance optimizations: lazy loading, LODs, compressed textures
 
 ## Tech Stack (common choices — adjust to match the real repo)
