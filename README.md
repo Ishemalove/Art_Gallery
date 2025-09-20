@@ -30,8 +30,9 @@ A modern, interactive art gallery web application that showcases digital artwork
 1. Clone the repository
 
 ```bash
-git clone <repo-url>
-cd <repo-folder>
+git clone https://github.com/Ishemalove/Art_Gallery
+
+cd  Art Galley
 ```
 
 2. Install dependencies
@@ -90,7 +91,7 @@ Deploy to Vercel / Netlify by connecting the repository and following the platfo
 * Navigate the gallery using mouse/trackpad or touch gestures.
 * Click an artwork to open a details panel with full metadata and zoom controls.
 * Use search and filters to find works by artist, year, or medium.
-* If curator/admin features exist, log in to manage artwork entries.
+
 
 ## Optimizations & Notes
 
