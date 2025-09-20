@@ -1,4 +1,4 @@
-# 3D Art Gallery
+# Art Gallery
 
 ## Project Overview
 
@@ -25,14 +25,14 @@ A modern, interactive art gallery web application that showcases digital artwork
 
 ## Local Setup
 
-> These are general steps — update commands to match the actual project scripts.
+> These are general steps 
 
 1. Clone the repository
 
 ```bash
 git clone https://github.com/Ishemalove/Art_Gallery
 
-cd  Art Galley
+cd  Art Gallery
 ```
 
 2. Install dependencies
@@ -111,6 +111,6 @@ Deploy to Vercel / Netlify by connecting the repository and following the platfo
 
 For questions or help, contact the project owner or maintainer.
 
----
+
 
 
