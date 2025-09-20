@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getArtworks, getArtworkCategories, getArtworkTags, artworksDatabase } from "@/lib/artwork-data"
 import type { ArtworkFilters, ApiResponse, Artwork } from "@/lib/types"
+ 
+ 
 
 export async function GET(request: NextRequest) {
   try {
@@ -8,7 +10,7 @@ export async function GET(request: NextRequest) {
 
     // Parse query parameters
     const filters: ArtworkFilters = {
-      type: searchParams.get("type") as "model" | "render" | undefined,
+      type: (searchParams.get("type") as "render" | undefined) || undefined,
       category: searchParams.get("category") || undefined,
       featured:
         searchParams.get("featured") === "true" ? true : searchParams.get("featured") === "false" ? false : undefined,
@@ -38,13 +40,17 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(response)
     }
 
-    // Get artworks with filters
-    const artworks = getArtworks(filters)
-    const total = getArtworks({ ...filters, limit: undefined, offset: undefined }).length
+    // Start with data from artwork-data so titles/descriptions come from there
+    const full = getArtworks({ ...filters, limit: undefined, offset: undefined })
 
-    const page = Math.floor((filters.offset || 0) / (filters.limit || 10)) + 1
+    // Return ALL curated entries so you can see missing images with their descriptions
+    const filtered = full.filter(a => a.thumbnailUrl !== "/IMG_20250714_161702.jpg")
+    const total = filtered.length
     const limit = filters.limit || 10
-    const hasMore = (filters.offset || 0) + artworks.length < total
+    const offset = filters.offset || 0
+    const page = Math.floor(offset / limit) + 1
+    const artworks = filtered.slice(offset, offset + limit)
+    const hasMore = offset + artworks.length < total
 
     const response: ApiResponse<Artwork[]> = {
       data: artworks,
@@ -84,13 +90,9 @@ export async function POST(request: NextRequest) {
       id: newId,
       title: artworkData.title,
       description: artworkData.description,
-      thumbnailUrl: `/placeholder.svg?height=400&width=400&query=${encodeURIComponent(artworkData.title)}`,
-      modelUrl: artworkData.type === "model" ? "/assets/3d/duck.glb" : undefined,
-      renderUrl:
-        artworkData.type === "render"
-          ? `/placeholder.svg?height=600&width=800&query=${encodeURIComponent(artworkData.title)}`
-          : undefined,
-      type: artworkData.type,
+      thumbnailUrl: `/IMG_20250728_174917.jpg`,
+      renderUrl: `/IMG_20250805_172351.jpg`,
+      type: "render",
       tags: artworkData.tags || [],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

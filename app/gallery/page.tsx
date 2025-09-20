@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import dynamic from "next/dynamic"
-const ModelViewer = dynamic(() => import("@/components/3d-model-viewer").then(mod => mod.ModelViewer), { ssr: false })
+ 
 import { ArtworkCard } from "@/components/artwork-card"
 import { GalleryFilters } from "@/components/gallery-filters"
 import { GalleryPagination } from "@/components/gallery-pagination"
@@ -14,11 +13,7 @@ import type { ArtworkFilters } from "@/lib/types"
 import { Grid, List, SortAsc } from "lucide-react"
 
 export default function GalleryPage() {
-  const [selectedModel, setSelectedModel] = useState<{
-    url: string
-    title: string
-    description: string
-  } | null>(null)
+  
 
   const [filters, setFilters] = useState<ArtworkFilters>({
     limit: 12,
@@ -31,6 +26,21 @@ export default function GalleryPage() {
   const [tags, setTags] = useState<string[]>([])
 
   const { artworks, loading, error, pagination } = useArtworks(filters)
+
+  // We now render cards from artworks so names/descriptions show for all 42
+
+  // Use artwork metadata when available to label photos, else derive a simple title
+  const photos = artworks.map((a) => ({
+    id: a.id,
+    title: a.title,
+    description: a.description,
+    thumbnailUrl: a.thumbnailUrl,
+  }))
+
+  // Use API pagination metadata
+  const pageSize = filters.limit || 12
+  const currentPage = Math.floor((filters.offset || 0) / pageSize) + 1
+  const totalPages = Math.ceil((pagination.total || 0) / pageSize)
 
   // Fetch categories and tags on mount
   useEffect(() => {
@@ -63,16 +73,7 @@ export default function GalleryPage() {
     setFilters({ ...filters, offset: newOffset })
   }
 
-  const handleViewModel = (modelUrl: string, title: string, description: string) => {
-    setSelectedModel({ url: modelUrl, title, description })
-  }
-
-  const handleCloseViewer = () => {
-    setSelectedModel(null)
-  }
-
-  const currentPage = Math.floor((filters.offset || 0) / (filters.limit || 12)) + 1
-  const totalPages = Math.ceil(pagination.total / (filters.limit || 12))
+  
 
   return (
     <div className="min-h-screen bg-background">
@@ -111,8 +112,8 @@ export default function GalleryPage() {
       <div className="container mx-auto px-4 py-8">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">3D Art Gallery</h1>
-          <p className="text-muted-foreground text-lg">Browse through {pagination.total} artworks created in Blender</p>
+          <h1 className="text-4xl font-bold mb-4">Photo & Art Gallery</h1>
+          <p className="text-muted-foreground text-lg">A living journal of feelings, light, and quiet stories</p>
         </div>
 
         {/* Filters */}
@@ -123,10 +124,8 @@ export default function GalleryPage() {
         {/* Toolbar */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
           <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">
-              {loading ? "Loading..." : `${artworks.length} of ${pagination.total} artworks`}
-            </span>
-            {filters.type && <Badge variant="secondary">{filters.type === "model" ? "3D Models" : "Renders"}</Badge>}
+            <span className="text-sm text-muted-foreground">{`${pagination.total} photos`}</span>
+            {filters.type && <Badge variant="secondary">Photos</Badge>}
             {filters.category && (
               <Badge variant="secondary">{filters.category.charAt(0).toUpperCase() + filters.category.slice(1)}</Badge>
             )}
@@ -193,22 +192,13 @@ export default function GalleryPage() {
                 viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"
               }`}
             >
-              {artworks.map((artwork, idx) => (
+              {photos.map((photo) => (
                 <ArtworkCard
-                  key={artwork.id}
-                  {...artwork}
-                  thumbnailUrl={
-                    artwork.thumbnailUrl ||
-                    [
-                      "/cyberpunk-neon-cityscape.jpg",
-                      "/bioluminescent-ocean-creatures.jpg",
-                      "/fractal-mathematical-patterns.jpg",
-                      "/abstract-3d-sculpture.png",
-                      "/modern-architecture-render.png",
-                      "/organic-3d-forms.png"
-                    ][idx % 6]
-                  }
-                  onViewModel={handleViewModel}
+                  key={photo.id}
+                  id={photo.id}
+                  title={photo.title}
+                  description={photo.description}
+                  thumbnailUrl={photo.thumbnailUrl}
                 />
               ))}
             </div>
@@ -219,7 +209,7 @@ export default function GalleryPage() {
                 <GalleryPagination
                   currentPage={currentPage}
                   totalPages={totalPages}
-                  hasMore={pagination.hasMore}
+                  hasMore={currentPage < totalPages}
                   onPageChange={handlePageChange}
                   loading={loading}
                 />
@@ -229,7 +219,7 @@ export default function GalleryPage() {
         )}
 
         {/* Empty State */}
-        {!loading && !error && artworks.length === 0 && (
+        {!loading && !error && photos.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground mb-4">No artworks found matching your criteria</p>
             <Button variant="outline" onClick={() => handleFiltersChange({ limit: filters.limit })}>
@@ -239,16 +229,9 @@ export default function GalleryPage() {
         )}
       </div>
 
-      {/* 3D Model Viewer Modal */}
-      {selectedModel && (
-        <ModelViewer
-          modelUrl={selectedModel.url}
-          title={selectedModel.title}
-          description={selectedModel.description}
-          isOpen={!!selectedModel}
-          onClose={handleCloseViewer}
-        />
-      )}
+      
     </div>
   )
 }
+
+// All-photos strip removed per requirements

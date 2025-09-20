@@ -14,7 +14,7 @@ interface ModelProps {
 }
 
 function Model({ url, scale = 1 }: ModelProps) {
-  const { scene } = useGLTF(url)
+  const { scene } = useGLTF(url) as any
   return <primitive object={scene} scale={scale} />
 }
 
@@ -51,7 +51,7 @@ export function ModelViewer({ modelUrl, title, description, isOpen, onClose }: M
             <Badge variant="secondary">Interactive 3D Model</Badge>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm" onClick={() => setResetCamera((prev) => prev + 1)}>
+            <Button variant="outline" size="sm" onClick={() => setResetCamera((prev: number) => prev + 1)}>
               <RotateCcw className="h-4 w-4 mr-2" />
               Reset View
             </Button>
@@ -124,5 +124,5 @@ export function ModelViewer({ modelUrl, title, description, isOpen, onClose }: M
         </div>
       </div>
     </div>
-  )
+  );
 }

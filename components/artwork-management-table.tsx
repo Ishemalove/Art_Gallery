@@ -92,7 +92,7 @@ export function ArtworkManagementTable({
                       </TableCell>
                       <TableCell>
                         <Badge variant={artwork.type === "model" ? "default" : "secondary"}>
-                          {artwork.type === "model" ? "3D Model" : "Render"}
+                          {"Photo"}
                         </Badge>
                       </TableCell>
                       <TableCell>

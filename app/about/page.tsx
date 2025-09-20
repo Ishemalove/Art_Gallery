@@ -12,9 +12,9 @@ export default function AboutPage() {
         <div className="container flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center animate-pulse">
-              <span className="text-primary-foreground font-bold text-sm">IA</span>
+              <span className="text-primary-foreground font-bold text-sm">AG</span>
             </div>
-            <h1 className="text-xl font-bold text-foreground">Innovation Art Center</h1>
+            <h1 className="text-xl font-bold text-foreground">Art Gallery</h1>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
@@ -51,14 +51,15 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(120,119,198,0.1),transparent_50%)]" />
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-primary/20 to-accent/20">
-            Our Story
+            My story
           </Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Where <span className="text-primary">Art</span> Meets <span className="text-accent">Innovation</span>
+            I am <span className="text-primary">A</span> Work <span className="text-accent">of Art</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 text-pretty max-w-3xl mx-auto">
-            The Innovation Art Center is more than a gallery—it's a laboratory for the future of creative expression,
-            where artists push the boundaries of what's possible with technology.
+          I am more than my studies or achievements! I am a reflective, resilient, and creative spirit.
+          My story is about seeking meaning, discovering myself and turning challenges into strength.
+          This is where my path of growth, authenticity, and freedom comes alive.
           </p>
         </div>
       </section>
@@ -68,32 +69,32 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+              <h2 className="text-3xl font-bold mb-6">Me at my Core</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                We believe that the intersection of art and technology creates unprecedented opportunities for human
-                expression. Our mission is to showcase, support, and celebrate artists who are pioneering new forms of
-                digital creativity.
+              I am ISHEMA NKERABAHIZI Love, a curious and creative soul who believes in growth through reflection, resilience, and authenticity. 
+              I find expression in art, photography, music, and storytelling, and I see challenges not as setbacks but as opportunities to learn and transform. 
+              My journey is shaped by a balance between personal dreams and responsibility to those I care about.
+              My mission is to use creativity, knowledge, and determination to build solutions that inspire change, uplift others, 
+              and open paths where opportunities are limited.
+               I aim to live authentically, pursue growth, and contribute meaningfully to both my community and the wider world.
               </p>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                From 3D sculptures that exist only in virtual space to generative art that evolves with each viewing, we
-                curate experiences that challenge traditional notions of what art can be and do.
-              </p>
+            
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary mb-1">500+</div>
-                  <div className="text-sm text-muted-foreground">Artworks Showcased</div>
+                  <div className="text-2xl font-bold text-primary mb-1">A lot of </div>
+                  <div className="text-sm text-muted-foreground">Memories saved</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-accent mb-1">150+</div>
-                  <div className="text-sm text-muted-foreground">Featured Artists</div>
+                  <div className="text-2xl font-bold text-accent mb-1">Infinity +</div>
+                  <div className="text-sm text-muted-foreground">Lessons learned</div>
                 </div>
               </div>
             </div>
             <div className="relative">
               <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                 <img
-                  src="/abstract-3d-sculpture.png"
-                  alt="3D Art Innovation"
+                  src="/IMG_20250831_162454.jpg"
+                  alt="Photography"
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
@@ -107,43 +108,42 @@ export default function AboutPage() {
       <section className="py-16 px-4 bg-muted/20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Values</h2>
+            <h2 className="text-3xl font-bold mb-4">What am I made of?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              These principles guide everything we do, from curation to community building.
+              These are the things that make me, me.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-background rounded-xl p-8 shadow-sm border text-center group hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/50 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:animate-pulse">
-                <span className="text-primary-foreground text-2xl">🚀</span>
+                <span className="text-primary-foreground text-2xl">🔍</span>
               </div>
-              <h3 className="text-xl font-bold mb-4">Innovation First</h3>
+              <h3 className="text-xl font-bold mb-4">Curiosity</h3>
               <p className="text-muted-foreground">
-                We prioritize groundbreaking work that pushes creative and technical boundaries, celebrating artists who
-                dare to experiment with new possibilities.
+                I am curious about everything and I'm always in awe of what life has to offer and how it can be used to make a difference.
               </p>
             </div>
 
             <div className="bg-background rounded-xl p-8 shadow-sm border text-center group hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent/50 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:animate-pulse">
-                <span className="text-accent-foreground text-2xl">🤝</span>
+                <span className="text-accent-foreground text-2xl">👨‍👩‍👧‍👦</span>
               </div>
-              <h3 className="text-xl font-bold mb-4">Community Driven</h3>
+              <h3 className="text-xl font-bold mb-4">Family</h3>
               <p className="text-muted-foreground">
-                Art thrives in community. We foster connections between artists, technologists, and audiences to create
-                a vibrant ecosystem of creative collaboration.
+                Family is my foundation and I'm grateful for the love and support they have given me. They have helped me grow and become the person I am today.
+                They have been here always even when I was not.
               </p>
             </div>
 
             <div className="bg-background rounded-xl p-8 shadow-sm border text-center group hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:animate-pulse">
-                <span className="text-primary-foreground text-2xl">🌍</span>
+                <span className="text-primary-foreground text-2xl">💪</span>
               </div>
-              <h3 className="text-xl font-bold mb-4">Global Accessibility</h3>
+              <h3 className="text-xl font-bold mb-4">Resilience</h3>
               <p className="text-muted-foreground">
-                Digital art transcends physical boundaries. We make innovative art accessible to global audiences
-                through immersive online experiences.
+                I have faced multiple setbacks, huh but one thing I am sure about is that I always find a ways to get back on my 
+                feet and in a better condition than I was.
               </p>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function AboutPage() {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">The Team Behind Innovation</h2>
+            <h2 className="text-3xl font-bold mb-4">My turning points</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our diverse team combines expertise in art, technology, and curation to create extraordinary experiences.
             </p>
@@ -163,34 +163,34 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <span className="text-4xl">👩‍🎨</span>
+                <span className="text-4xl">🖼️</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Sarah Chen</h3>
-              <p className="text-primary font-medium mb-2">Creative Director</p>
+              <h3 className="text-xl font-bold mb-2">Art</h3>
+              <p className="text-primary font-medium mb-2">Paintings and Photography</p>
               <p className="text-sm text-muted-foreground">
-                Former digital artist with 15+ years in immersive media and virtual reality experiences.
+                Drawing and Photography are my way of expressing myself and my thoughts and conveying my emotions.
               </p>
             </div>
 
             <div className="text-center group">
               <div className="w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <span className="text-4xl">👨‍💻</span>
+                <span className="text-4xl">🎵</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Marcus Rodriguez</h3>
-              <p className="text-accent font-medium mb-2">Technical Lead</p>
+              <h3 className="text-xl font-bold mb-2">Music</h3>
+              <p className="text-accent font-medium mb-2">Perfect escape</p>
               <p className="text-sm text-muted-foreground">
-                Full-stack developer specializing in 3D web technologies and interactive art installations.
+                Music takes me to another dimension and it's my perfect escape from everyday reality.
               </p>
             </div>
 
             <div className="text-center group">
               <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <span className="text-4xl">👩‍🏫</span>
+                <span className="text-4xl">🌅</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Dr. Amara Okafor</h3>
-              <p className="text-primary font-medium mb-2">Curator & Researcher</p>
+              <h3 className="text-xl font-bold mb-2">Sunsets</h3>
+              <p className="text-primary font-medium mb-2">Beauty and Hope</p>
               <p className="text-sm text-muted-foreground">
-                Art historian and curator focused on the intersection of technology and contemporary art practices.
+                Sunsets remind me that every ending is the beginning of something new. Something in the orange tells me there is always hope.
               </p>
             </div>
           </div>
@@ -200,26 +200,28 @@ export default function AboutPage() {
       {/* Vision Section */}
       <section className="py-16 px-4 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold mb-6">Our Vision for the Future</h2>
+          <h2 className="text-3xl font-bold mb-6">My Vision for the Future</h2>
           <p className="text-lg text-muted-foreground mb-8 text-pretty">
-            We envision a world where digital art is as valued and accessible as traditional forms, where technology
-            amplifies human creativity rather than replacing it, and where artists have the tools and platforms they
-            need to explore uncharted creative territories.
+          I envision a life where my creativity, resilience, and curiosity shape not only my own journey but also inspire
+      others. I want to grow into someone who turns challenges into opportunities, who lives authentically, and who
+      uses knowledge, art, and innovation to make a meaningful impact in my community and beyond.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             <div className="bg-background/50 rounded-xl p-6 backdrop-blur-sm border">
-              <h3 className="text-xl font-bold mb-4 text-primary">Next-Gen Exhibitions</h3>
+              <h3 className="text-xl font-bold mb-4 text-primary">Growth</h3>
               <p className="text-muted-foreground text-sm">
-                Immersive virtual galleries that adapt to each visitor, creating personalized art experiences through AI
+                Growth is the key to success and I want to grow into someone who turns challenges into opportunities, who lives authentically, and who
+                uses knowledge, art, and innovation to make a meaningful impact in my community and beyond.
                 and machine learning.
               </p>
             </div>
             <div className="bg-background/50 rounded-xl p-6 backdrop-blur-sm border">
-              <h3 className="text-xl font-bold mb-4 text-accent">Artist Empowerment</h3>
+              <h3 className="text-xl font-bold mb-4 text-accent">Autonomy</h3>
               <p className="text-muted-foreground text-sm">
-                Tools and platforms that help digital artists monetize their work, connect with collectors, and build
-                sustainable creative careers.
+                Autonomy is the key to success and I want to grow into someone who turns challenges into opportunities, who lives authentically, and who
+                impacts my community and beyond.My dream is to inspire and uplift others through everything I learn and through my skills.
+                
               </p>
             </div>
           </div>
@@ -230,7 +232,7 @@ export default function AboutPage() {
                 size="lg"
                 className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
               >
-                Join Our Mission
+                A life in the making!
               </Button>
             </Link>
           </div>
@@ -240,7 +242,7 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="border-t border-border py-8 px-4">
         <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">© 2024 Innovation Art Center. Where creativity meets technology.</p>
+          <p className="text-muted-foreground">©INL.</p>
         </div>
       </footer>
     </div>

@@ -14,13 +14,14 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState("overview")
   const [editingArtwork, setEditingArtwork] = useState<Artwork | null>(null)
   const [showForm, setShowForm] = useState(false)
+  const [limit, setLimit] = useState(12)
+  const [offset, setOffset] = useState(0)
 
-  const { artworks, loading, error } = useArtworks({ limit: 100 })
+  const { artworks, loading, error, pagination } = useArtworks({ limit, offset })
 
   const stats = {
     total: artworks.length,
-    models: artworks.filter((a) => a.type === "model").length,
-    renders: artworks.filter((a) => a.type === "render").length,
+    photos: artworks.filter((a) => a.type === "render").length,
     featured: artworks.filter((a) => a.featured).length,
   }
 
@@ -83,7 +84,7 @@ export default function AdminPage() {
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">3D</span>
+              <span className="text-primary-foreground font-bold text-sm">AG</span>
             </div>
             <h1 className="text-xl font-bold text-foreground">Gallery Admin</h1>
           </div>
@@ -126,23 +127,12 @@ export default function AdminPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">3D Models</CardTitle>
-                  <BarChart3 className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{stats.models}</div>
-                  <p className="text-xs text-muted-foreground">Interactive models</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Renders</CardTitle>
+                  <CardTitle className="text-sm font-medium">Photos</CardTitle>
                   <Eye className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{stats.renders}</div>
-                  <p className="text-xs text-muted-foreground">Static renders</p>
+                  <div className="text-2xl font-bold">{stats.photos}</div>
+                  <p className="text-xs text-muted-foreground">Images and visual stories</p>
                 </CardContent>
               </Card>
 
@@ -199,6 +189,22 @@ export default function AdminPage() {
               onToggleFeatured={handleToggleFeatured}
               loading={loading}
             />
+
+            <div className="flex items-center justify-between">
+              <div className="text-sm text-muted-foreground">
+                {pagination ? `Showing ${artworks.length} of ${pagination.total}` : `Showing ${artworks.length}`}
+              </div>
+              <div className="flex items-center gap-2">
+                <Button variant="outline" size="sm" disabled={offset === 0 || loading} onClick={() => setOffset(Math.max(0, offset - limit))}>Previous</Button>
+                <Button variant="outline" size="sm" disabled={loading || (pagination ? offset + artworks.length >= pagination.total : false)} onClick={() => setOffset(offset + limit)}>Next</Button>
+                <select className="border rounded px-2 py-1 text-sm" value={limit} onChange={(e) => { const nl = Number(e.target.value) || 12; setLimit(nl); setOffset(0) }}>
+                  <option value={6}>6</option>
+                  <option value={12}>12</option>
+                  <option value={24}>24</option>
+                  <option value={48}>48</option>
+                </select>
+              </div>
+            </div>
           </TabsContent>
 
           <TabsContent value="form" className="space-y-6">

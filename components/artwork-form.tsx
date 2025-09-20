@@ -25,7 +25,7 @@ export function ArtworkForm({ artwork, onSave, onCancel, loading = false }: Artw
   const [formData, setFormData] = useState({
     title: artwork?.title || "",
     description: artwork?.description || "",
-    type: artwork?.type || "model",
+    type: (artwork?.type ?? "render") as "render",
     category: artwork?.category || "",
     featured: artwork?.featured || false,
     tags: artwork?.tags || [],
@@ -122,15 +122,7 @@ export function ArtworkForm({ artwork, onSave, onCancel, loading = false }: Artw
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="type">Type</Label>
-                <Select value={formData.type} onValueChange={(value) => handleInputChange("type", value)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="model">3D Model</SelectItem>
-                    <SelectItem value="render">Render</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="px-3 py-2 border rounded-md text-sm bg-muted/30">Photo</div>
               </div>
 
               <div>
@@ -175,18 +167,7 @@ export function ArtworkForm({ artwork, onSave, onCancel, loading = false }: Artw
                 />
               </div>
 
-              {formData.type === "model" && (
-                <div>
-                  <Label htmlFor="polyCount">Polygon Count</Label>
-                  <Input
-                    id="polyCount"
-                    type="number"
-                    value={formData.polyCount}
-                    onChange={(e) => handleInputChange("polyCount", Number.parseInt(e.target.value) || 0)}
-                    placeholder="e.g., 15420"
-                  />
-                </div>
-              )}
+              {/* No polygon count for photos */}
             </div>
           </div>
 
@@ -266,15 +247,7 @@ export function ArtworkForm({ artwork, onSave, onCancel, loading = false }: Artw
                 </Button>
               </div>
 
-              {formData.type === "model" && (
-                <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-                  <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                  <p className="text-sm text-muted-foreground mb-2">3D Model File</p>
-                  <Button variant="outline" size="sm">
-                    Upload Model
-                  </Button>
-                </div>
-              )}
+              {/* No model upload for photos */}
             </div>
           </div>
 

@@ -3,9 +3,8 @@ export interface Artwork {
   title: string
   description: string
   thumbnailUrl: string
-  modelUrl?: string
   renderUrl?: string
-  type: "model" | "render"
+  type: "render"
   tags: string[]
   createdAt: string
   updatedAt: string
@@ -17,7 +16,7 @@ export interface Artwork {
 }
 
 export interface ArtworkFilters {
-  type?: "model" | "render"
+  type?: "render"
   category?: string
   featured?: boolean
   tags?: string[]

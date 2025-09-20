@@ -93,18 +93,11 @@ export function GalleryFilters({ filters, onFiltersChange, categories, tags }: G
                   All
                 </Button>
                 <Button
-                  variant={filters.type === "model" ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => handleFilterChange("type", "model")}
-                >
-                  3D Models
-                </Button>
-                <Button
                   variant={filters.type === "render" ? "default" : "outline"}
                   size="sm"
                   onClick={() => handleFilterChange("type", "render")}
                 >
-                  Renders
+                  Photos
                 </Button>
               </div>
             </div>

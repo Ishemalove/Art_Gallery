@@ -3,28 +3,22 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import dynamic from "next/dynamic"
-const ModelViewer = dynamic(() => import("@/components/3d-model-viewer").then(mod => mod.ModelViewer), { ssr: false })
 import { ArtworkCard } from "@/components/artwork-card"
 import { useArtworks } from "@/hooks/use-artworks"
 import Link from "next/link"
 
 export default function GalleryHomePage() {
-  const [selectedModel, setSelectedModel] = useState<{
-    url: string
-    title: string
-    description: string
-  } | null>(null)
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
   const { artworks, loading, error } = useArtworks({ featured: true, limit: 6 })
 
   const heroImages = [
-    "/colorful-generative-algorithmic-art-patterns.jpg",
-    "/mixed-reality-ar-vr-futuristic-interface.jpg",
-    "/abstract-3d-sculpture.png",
-    "/modern-architecture-render.png",
+    "/IMG_20240724_164541.jpg",
+    "/IMG_20250416_172615.jpg",
+    "/IMG_20250416_172658.jpg",
+    "/IMG_20250714_162840.jpg",
   ]
 
   useEffect(() => {
@@ -35,13 +29,7 @@ export default function GalleryHomePage() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleViewModel = (modelUrl: string, title: string, description: string) => {
-    setSelectedModel({ url: modelUrl, title, description })
-  }
-
-  const handleCloseViewer = () => {
-    setSelectedModel(null)
-  }
+  
 
   return (
     <div className="min-h-screen bg-background">
@@ -50,9 +38,9 @@ export default function GalleryHomePage() {
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center animate-pulse">
-              <span className="text-primary-foreground font-bold text-sm">IA</span>
+              <span className="text-primary-foreground font-bold text-sm">AG</span>
             </div>
-            <h1 className="text-xl font-bold text-foreground">Innovation Art Center</h1>
+            <h1 className="text-xl font-bold text-foreground">Art Galllery</h1>
           </div>
 
           <nav className="hidden md:flex items-center space-x-6">
@@ -82,7 +70,7 @@ export default function GalleryHomePage() {
               size="sm"
               className="bg-gradient-to-r from-primary/10 to-accent/10 hover:from-primary/20 hover:to-accent/20 transition-all duration-300 hover:scale-105"
             >
-              Explore Art
+              Explore Me
             </Button>
           </Link>
         </div>
@@ -121,15 +109,15 @@ export default function GalleryHomePage() {
           className={`relative z-10 text-center space-y-6 px-4 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-primary/20 to-accent/20 animate-pulse">
-            Where Art Meets Innovation
+            Where Art Meets Emotions
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-balance">
-            Digital <span className="text-primary animate-pulse">Art</span> Innovation{" "}
-            <span className="text-accent animate-pulse">Center</span>
+            The <span className="text-primary animate-pulse">Art</span> of Being{" "}
+            <span className="text-accent animate-pulse">In Love</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Discover groundbreaking digital artworks that push the boundaries of creativity. From 3D sculptures to
-            generative art, mixed reality experiences to interactive installations.
+            Discover me through my art and the lessons I have learned throughought life, discover my journey and my art. These are not just photos, but fragments of how I breathe,
+             notice, and hold on to the fleeting—where sunsets, clouds, and wires tell their own quiet stories.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link href="/gallery">
@@ -137,7 +125,7 @@ export default function GalleryHomePage() {
                 size="lg"
                 className="text-lg px-8 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                Explore Innovation
+                Explore ME
               </Button>
             </Link>
             <Link href="/gallery?category=experimental">
@@ -146,7 +134,7 @@ export default function GalleryHomePage() {
                 size="lg"
                 className="text-lg px-8 bg-transparent border-primary/50 hover:bg-primary/10 transition-all duration-300 hover:scale-105"
               >
-                View Experiments
+                Not Just Pictures!
               </Button>
             </Link>
           </div>
@@ -156,46 +144,44 @@ export default function GalleryHomePage() {
       <section className="py-16 px-4 bg-muted/20">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Interactive Art Showcase</h2>
+            <h2 className="text-3xl font-bold mb-4">Little things, big feelings</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Hover over each artwork to reveal its story and creative process
+            Every frame is a gentle reminder: beauty hides in the smallest, quietest places
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                image: "/3d-character-design.png",
-                title: "Digital Personas",
-                description: "Exploring identity in virtual spaces",
-                category: "3D Art",
+          {[
+             { image: "/IMG_20240808_163639.jpg", 
+               title: "Cotton Whispers", 
+               description: "Clouds that remind me heaviness can float.",  
+               category: "Sky" 
               },
-              {
-                image: "/3d-environment-scene.png",
-                title: "Immersive Worlds",
-                description: "Crafting experiences beyond reality",
-                category: "Environment",
+
+             { image: "/IMG_20240808_174035.jpg", 
+               title: "Tangled Poetry", 
+               description: "Wires against dusk, imperfect but beautiful.", 
+               category: "Everyday" 
               },
-              {
-                image: "/product-visualization-render.png",
-                title: "Future Objects",
-                description: "Reimagining everyday items",
-                category: "Product Design",
+             { image: "/IMG_20240808_174232.jpg", 
+               title: "The Sun’s Gentle Goodbye", 
+               description: "Light leaving rooftops like a soft farewell.", 
+               category: "Sunset" 
               },
-              {
-                image: "/organic-3d-forms.png",
-                title: "Natural Algorithms",
-                description: "Where nature meets mathematics",
-                category: "Generative",
+             { image: "/IMG_20240808_174250.jpg", 
+               title: "Silent Warmth", 
+               description: "An empty sky that still holds me close.", 
+               category: "Evening" 
               },
-            ].map((artwork, index) => (
+
+             ].map((artwork, index) => (
               <div
                 key={index}
                 className="group relative overflow-hidden rounded-xl bg-background border hover:shadow-xl transition-all duration-500 hover:scale-105"
               >
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src={artwork.image || "/placeholder.svg"}
+                    src={artwork.image || "/placeholder.jpg"}
                     alt={artwork.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
@@ -218,9 +204,9 @@ export default function GalleryHomePage() {
       <section id="gallery" className="py-16 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Innovations</h2>
+            <h2 className="text-3xl font-bold mb-4">Moments of Inspiration</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Cutting-edge digital artworks that explore new frontiers in creativity, technology, and human expression
+              A heartfelt collection of moments that capture fleeting emotions, awaken imagination and reveal the beauty in life's lessons.
             </p>
           </div>
 
@@ -240,11 +226,11 @@ export default function GalleryHomePage() {
           )}
 
           {!loading && !error && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {artworks
-                .filter(a => typeof a.modelUrl === "string" && a.modelUrl)
-                .slice(0, 3)
-                .map((artwork, idx) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {(() => {
+                const displayArtworks = artworks.slice(0, 3)
+                
+                return displayArtworks.map((artwork, idx) => (
                   <ArtworkCard
                     key={artwork.id}
                     id={artwork.id}
@@ -253,16 +239,14 @@ export default function GalleryHomePage() {
                     thumbnailUrl={
                       artwork.thumbnailUrl ||
                       [
-                        "/cyberpunk-neon-cityscape.jpg",
-                        "/bioluminescent-ocean-creatures.jpg",
-                        "/fractal-mathematical-patterns.jpg"
+                        "/IMG_20250728_174919.jpg",
+                        "/IMG_20250805_172351.jpg",
+                        "/IMG_20250831_174126.jpg"
                       ][idx % 3]
                     }
-                    modelUrl={artwork.modelUrl as string}
-                    type={artwork.type}
-                    onViewModel={handleViewModel}
                   />
-                ))}
+                ))
+              })()}
             </div>
           )}
 
@@ -273,7 +257,7 @@ export default function GalleryHomePage() {
                 size="lg"
                 className="hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 bg-transparent"
               >
-                Discover More Innovations
+               Explore more stories in Gallery
               </Button>
             </Link>
           </div>
@@ -281,144 +265,146 @@ export default function GalleryHomePage() {
       </section>
 
       {/* Enhanced About Section with Stories */}
-      <section id="about" className="py-16 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">Stories Behind Innovation</h2>
-            <p className="text-lg text-muted-foreground mb-8 text-pretty max-w-3xl mx-auto">
-              Every piece in our collection tells a story of creative breakthrough, technical innovation, and artistic
-              vision. Discover the narratives that drive digital art forward.
+<section id="about" className="py-16 px-4 bg-muted/30">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold mb-6">Stories Nature Teaches</h2>
+      <p className="text-lg text-muted-foreground mb-8 text-pretty max-w-3xl mx-auto">
+        Behind every creation lies a quiet lesson from nature—how rivers teach flow, trees whisper patience, and skies
+        remind us of endless possibility. These stories are not just about art, but about listening deeply to the world
+        and carrying its wisdom into every brushstroke, shape, and vision.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      <div className="group bg-background rounded-xl p-8 shadow-sm border hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+        <div className="flex items-start gap-6">
+          <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+            <img
+              src="/IMG_20250715_171952.jpg"
+              alt="Roots of Renewal"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+              Roots of Renewal
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              From the roots buried deep in soil, I’ve learned that unseen strength often sustains visible beauty.
+              Like trees that bend but do not break, this story teaches me resilience—the courage to stand tall after
+              every storm and to grow quietly, even in the shadows.
             </p>
           </div>
+        </div>
+      </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <div className="group bg-background rounded-xl p-8 shadow-sm border hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-              <div className="flex items-start gap-6">
-                <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                  <img
-                    src="/abstract-3d-sculpture.png"
-                    alt="3D Renaissance"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-                    The 3D Renaissance
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Our 3D artworks represent more than digital sculptures—they're explorations of space, light, and
-                    form that challenge traditional artistic boundaries. Each piece begins as a vision, evolves through
-                    countless iterations, and emerges as a testament to the marriage of technology and creativity.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="group bg-background rounded-xl p-8 shadow-sm border hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-              <div className="flex items-start gap-6">
-                <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                  <img
-                    src="/mixed-reality-ar-vr-futuristic-interface.jpg"
-                    alt="Interactive Futures"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-4 group-hover:text-accent transition-colors">
-                    Interactive Futures
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Beyond static beauty lies the realm of interaction. Our mixed reality and generative art pieces
-                    respond to viewers, evolve over time, and create unique experiences for each encounter. These works
-                    question the traditional relationship between artist, artwork, and audience.
-                  </p>
-                </div>
-              </div>
-            </div>
+      <div className="group bg-background rounded-xl p-8 shadow-sm border hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+        <div className="flex items-start gap-6">
+          <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+            <img
+              src="/IMG_20250805_175050.jpg"
+              alt="Dance of Horizons"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
           </div>
-
-          {/* Innovation Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { icon: "🔬", title: "Experimental", desc: "Pushing boundaries with new techniques and technologies" },
-              { icon: "🌐", title: "Interactive", desc: "Engaging viewers through immersive digital experiences" },
-              { icon: "🎯", title: "Purposeful", desc: "Art with meaning, addressing contemporary themes" },
-              { icon: "🚀", title: "Forward-Thinking", desc: "Anticipating the future of digital creativity" },
-            ].map((pillar, index) => (
-              <div
-                key={index}
-                className="text-center space-y-3 group hover:scale-105 transition-transform duration-300"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mx-auto group-hover:animate-pulse">
-                  <span className="text-primary-foreground text-xl">{pillar.icon}</span>
-                </div>
-                <h3 className="font-semibold group-hover:text-primary transition-colors">{pillar.title}</h3>
-                <p className="text-sm text-muted-foreground">{pillar.desc}</p>
-              </div>
-            ))}
+          <div>
+            <h3 className="text-xl font-bold mb-4 group-hover:text-accent transition-colors">
+              Dance of Horizons
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              The horizon reminds me that every ending is the beginning of something new. Sunsets teach acceptance,
+              while dawns bring hope. This piece is a story of embracing change—of learning to find beauty in both
+              the stillness of night and the promise of morning light.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      {/* New Innovation Section */}
-      <section id="innovation" className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold mb-6">The Innovation Process</h2>
-          <p className="text-lg text-muted-foreground mb-12 text-pretty">
-            Every artwork begins with a question: "What if?" Our innovation process transforms curiosity into creation.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-primary text-2xl font-bold">1</span>
-              </div>
-              <h3 className="text-xl font-semibold">Explore</h3>
-              <p className="text-muted-foreground">
-                We investigate emerging technologies, artistic movements, and cultural shifts to identify new creative
-                possibilities.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-accent text-2xl font-bold">2</span>
-              </div>
-              <h3 className="text-xl font-semibold">Experiment</h3>
-              <p className="text-muted-foreground">
-                Through rapid prototyping and iterative design, we test ideas, push limits, and discover unexpected
-                outcomes.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-primary text-2xl font-bold">3</span>
-              </div>
-              <h3 className="text-xl font-semibold">Evolve</h3>
-              <p className="text-muted-foreground">
-                Each piece evolves through community feedback, technological advancement, and artistic refinement.
-              </p>
-            </div>
+    {/* Nature’s Pillars */}
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      {[
+        { icon: "🍃", title: "Resilience", desc: "Like trees that weather storms, I learn to stand tall through trials" },
+        { icon: "🌊", title: "Flow", desc: "Rivers teach me to adapt, to move forward even when the path bends" },
+        { icon: "☀️", title: "Hope", desc: "Every sunrise is a reminder that light always returns after darkness" },
+        { icon: "🌌", title: "Wonder", desc: "The stars whisper that there is always more to discover, within and beyond" },
+      ].map((pillar, index) => (
+        <div
+          key={index}
+          className="text-center space-y-3 group hover:scale-105 transition-transform duration-300"
+        >
+          <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mx-auto group-hover:animate-pulse">
+            <span className="text-primary-foreground text-xl">{pillar.icon}</span>
           </div>
+          <h3 className="font-semibold group-hover:text-primary transition-colors">{pillar.title}</h3>
+          <p className="text-sm text-muted-foreground">{pillar.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+     {/* Self-Reflective Journey Section */}
+<section id="innovation" className="py-20 px-6 bg-gradient-to-b from-background to-muted/30">
+  <div className="container mx-auto max-w-5xl text-center">
+    <h2 className="text-4xl font-extrabold tracking-tight mb-6">
+      The Journey of Creation
+    </h2>
+    <p className="text-lg text-muted-foreground mb-14 max-w-2xl mx-auto">
+      Every creation begins with a challenge. Each obstacle becomes a teacher, guiding us to explore, endure, and grow. 
+      This is the story of facing difficulty, learning from it, and emerging stronger.
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {/* Step 1 */}
+      <div className="space-y-5 text-center">
+        <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto shadow-md">
+          <span className="text-primary text-3xl font-bold">1</span>
+        </div>
+        <h3 className="text-2xl font-semibold">The Challenge</h3>
+        <p className="text-muted-foreground">
+          Every idea starts with uncertainty. Moments of doubt, obstacles, and setbacks test our courage and resilience. 
+          But it is in these moments that we find our inner strength.
+        </p>
+      </div>
+
+      {/* Step 2 */}
+      <div className="space-y-5 text-center">
+        <div className="w-20 h-20 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto shadow-md">
+          <span className="text-accent text-3xl font-bold">2</span>
+        </div>
+        <h3 className="text-2xl font-semibold">The Fight</h3>
+        <p className="text-muted-foreground">
+          Through persistence, reflection, and creativity, we confront our challenges head-on. 
+          Each effort, experiment, and small victory strengthens our resolve, shaping a path forward.
+        </p>
+      </div>
+
+      {/* Step 3 */}
+      <div className="space-y-5 text-center">
+        <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto shadow-md">
+          <span className="text-primary text-3xl font-bold">3</span>
+        </div>
+        <h3 className="text-2xl font-semibold">Lessons Learned</h3>
+        <p className="text-muted-foreground">
+          Every struggle teaches us wisdom: patience, adaptability, and the power of reflection. 
+          We emerge stronger, more inspired, and ready to create with renewed purpose.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className="border-t border-border py-8 px-4">
         <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">© 2024 Innovation Art Center. Where creativity meets technology.</p>
+          <p className="text-muted-foreground">© INL.</p>
         </div>
       </footer>
 
-      {/* 3D Model Viewer Modal (client-only) */}
-      {selectedModel && typeof window !== "undefined" && (
-        <ModelViewer
-          modelUrl={selectedModel.url}
-          title={selectedModel.title}
-          description={selectedModel.description}
-          isOpen={!!selectedModel}
-          onClose={handleCloseViewer}
-        />
-      )}
+      
     </div>
   )
 }
